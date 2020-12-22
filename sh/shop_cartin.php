@@ -17,7 +17,6 @@ else
 }
 ?>
 
-<!DOCTYPE html>
 <!doctype html>
 <html lang="ja">
   <head>
