@@ -11,7 +11,6 @@ if(isset($_SESSION['member_login'])==false){
     print '<br />';
 }
 ?>
-
 <!doctype html>
 <html lang="ja">
   <head>
@@ -25,42 +24,27 @@ if(isset($_SESSION['member_login'])==false){
     <title>レンタルショップ</title>
   </head>
   <body>
-
-<?php
-
-try
-{
-
-$pro_code=$_GET['procode'];
-
-if(isset($_SESSION['cart'])==true)
-{
-	$cart=$_SESSION['cart'];
-	$kazu=$_SESSION['kazu'];
-	if(in_array($pro_code,$cart)==true)
-	{
-		print 'その商品はすでにカートに入っています。<br />';
-		print '<a href="shop_list.php">商品一覧に戻る</a>';
-		exit();
-	}
-}
-$cart[]=$pro_code;
-$kazu[]=1;
-$_SESSION['cart']=$cart;
-$_SESSION['kazu']=$kazu;
-
-}
-catch(Exception $e)
-{
-	print 'ただいま障害により大変ご迷惑をお掛けしております。';
-	exit();
-}
-
-?>
-
-カートに追加しました。<br />
+商品追加<br />
 <br />
-<a href="shop_list.php">商品一覧に戻る</a>
+<form method="post" action="sh_add_check.php" enctype="multipart/form-data">
+商品名を入力してください。<br />
+<input type="text" name="name" style="width:200px"><br />
+適当なコードを入力してください。（数字）<br />
+<input type="text" name="price" style="width:50px"><br />
+画像を選んでください。<br />
+<input type="file" name="gazou" style="width:400px"><br />
+<br />
+商品の詳細を入力してください。<br>
+<textarea name="com" rows="5" placeholder="詳細を入力して下さい"></textarea><br>
+<br>
+メールアドレスを入力して下さい<br>
+<input type="text" name="email" style="width=200px"><br>
+<br>
+<a href="https://www.bannerkoubou.com/">画像加工</a><br>
+<br>
+<input type="button" onclick="history.back()" value="戻る">
+<input type="submit" value="ＯＫ">
+</form>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
